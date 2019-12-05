@@ -1,5 +1,15 @@
 # gbc-gyroscope
 
+## Arduino IDE Config
+
+Board: Arduino Mega 2560
+
+Processor: ATMega 2560
+
+Port: Serial 1 (should be automatic)
+
+
+
 ## Output Example
 
 Start rotation: 
