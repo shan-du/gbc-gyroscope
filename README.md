@@ -23,7 +23,7 @@ Stop
 Reverse rotation again:
 `-2, -1, 0, 1, 2`
 
-# Output Example (updated 2019-12-06)
+## Output Example (updated 2019-12-06)
 
 Encoder 1: 1000/1001
 
