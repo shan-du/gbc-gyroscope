@@ -32,22 +32,25 @@ void setup() {
 void encoderLoop(int index) {
   // Reads the "current" state of all the outputs
   outputACurrentState[index] = digitalRead(outputA[index]);
+  int c = 0;
    
   // If the previous and the current state of the output are different, that means a Pulse has occured
   if (outputACurrentState[index] != outputAPreviousState[index]){     
     // If the post-output state is different to the pre-output state, that means the encoder is rotating clockwise
-    if (digitalRead(outputB[index]) != outputACurrentState[index]) { 
-      counter[index] ++;
-   } else {
-      counter[index] --;
-   }
+    if (digitalRead(outputB[index]) != outputACurrentState[index]) {
+      c = 1;
+    }
+
+    // pad encoder output with big number to identify each encoder
+    // e.g encoder 1: 1000/1001, encoder 2: 2000/2001, encoder 3: 3000/3001
+    int paddedOutput = basePadding * (index + 1) + c;
+    Serial.println(paddedOutput);
   
    // Compose the message for printing
-   // String message = "Encoder " + (String)index + ": " + (String)counter[index];
    // pad encoder output with big number to identify each encoder
-   // e.g encoder 1: 0, encoder 2: 5000, encoder 3: 10000
-   int paddedOutput = basePadding * (index * 5) + counter[index];
-   Serial.println(paddedOutput);
+   // e.g encoder 1: 5000, encoder 2: 10000, encoder 3: 15000
+   // int paddedOutput = basePadding * (index + 1) + counter[index];
+   // Serial.println(paddedOutput);
   }
   
   // Updates the previous state of all the outputs with the current state
