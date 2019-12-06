@@ -12,6 +12,7 @@ int outputAPreviousState[numberOfEncoders];
 
 int outputA[] = {output1A, output2A, output3A};
 int outputB[] = {output1B, output2B, output3B};
+long basePadding = 1000000;
 
 void setup() { 
   pinMode (output1A,INPUT);
@@ -42,8 +43,11 @@ void encoderLoop(int index) {
    }
   
    // Compose the message for printing
-   String message = "Encoder " + (String)index + ": " + (String)counter[index];
-   Serial.println(message);
+   // String message = "Encoder " + (String)index + ": " + (String)counter[index];
+   // pad encoder output with big number to identify each encoder
+   // e.g encoder 1: 1000000, encoder 2: 5000000, encoder 3: 9000000
+   long paddedOutput = basePadding * (index * 4 + 1) + counter[index];
+   Serial.println(paddedOutput);
   }
   
   // Updates the previous state of all the outputs with the current state
