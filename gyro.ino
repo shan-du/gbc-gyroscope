@@ -1,9 +1,11 @@
+  
 #define output1A 3
 #define output1B 4
-#define output2A 5
-#define output2B 6
-#define output3A 7
-#define output3B 8
+// pin 5 is broken
+#define output2A 6
+#define output2B 7
+#define output3A 8
+#define output3B 9
 #define numberOfEncoders 3
 
 int counter[] = {0, 0, 0};
