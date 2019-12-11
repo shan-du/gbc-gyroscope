@@ -1,11 +1,11 @@
   
-#define output1A 3
-#define output1B 4
+#define output1A 2
+#define output1B 3
 // pin 5 is broken
-#define output2A 6
-#define output2B 7
-#define output3A 8
-#define output3B 9
+#define output2A 7
+#define output2B 8
+#define output3A 10
+#define output3B 11
 #define numberOfEncoders 3
 
 int counter[] = {0, 0, 0};
@@ -24,7 +24,10 @@ void setup() {
   pinMode (output3A,INPUT);
   pinMode (output3B,INPUT);
   
+  
   Serial.begin (9600);
+
+
   // Reads the initial state of all the outputs
   for (int i=0; i<numberOfEncoders; i++) {
     outputAPreviousState[i] = digitalRead(outputA[i]);
@@ -35,9 +38,11 @@ void encoderLoop(int index) {
   // Reads the "current" state of all the outputs
   outputACurrentState[index] = digitalRead(outputA[index]);
   int c = 0;
+
    
   // If the previous and the current state of the output are different, that means a Pulse has occured
-  if (outputACurrentState[index] != outputAPreviousState[index]){     
+  if (outputACurrentState[index] != outputAPreviousState[index]){
+    // Serial.println("index: " + (String)index + " current state: " + (String)outputACurrentState[index] + " previous state: " + (String)outputAPreviousState[index]);
     // If the post-output state is different to the pre-output state, that means the encoder is rotating clockwise
     if (digitalRead(outputB[index]) != outputACurrentState[index]) {
       c = 1;
