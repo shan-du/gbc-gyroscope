@@ -25,8 +25,8 @@ Reverse rotation again:
 
 ## Output Example (updated 2019-12-06)
 
-Encoder 1: 1000/1001
-
-Encoder 2: 2000/2001
-
-Encoder 3: 3000/3001
+|Encoder   |Output   |Fixed On   |Controls   |
+|---|---|---|---|
+|1   |1000/1001   |Ring 2   |Ring 3 (inner ring)   |
+|2   |2000/2001   |Ring 1   |Ring 2   |
+|3   |3000/3001   |Frame (outer ring)   |Ring 1   |
